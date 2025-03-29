@@ -55,7 +55,6 @@ services:
       - MIN_CONCURRENCY=${MIN_CONCURRENCY}
     depends_on:
       - db
-        condition: service_healthy
       - redis
     networks:
       - rengine_network
@@ -75,6 +74,7 @@ services:
     depends_on:
       - celery
       - db
+        condition: service_healthy
     volumes:
       - ./web:/usr/src/app
       - github_repos:/usr/src/github
